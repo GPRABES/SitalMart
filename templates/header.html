@@ -1,0 +1,19 @@
+<header >
+    <div class="logo">
+        <a href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='assets/text-and-logo.png') }}" alt="logo">
+        </a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#home" class="btn text-muted">Home</a></li>
+            <li><a href="#shop" class="btn text-muted">Shop</a></li>
+            <li><a href="#vegetables" class="btn text-muted">Vegetables</a></li>
+            <li><a href="#fruits" class="btn text-muted">Fruits</a></li>
+            <li><a href="#pickles" class="btn text-muted">Pickles</a></li>
+        </ul>
+    </nav>
+    <div>
+        <a href="{{ url_for('login') }}" class="btn btn-outline-secondary">Login / Register</a>
+    </div>
+</header>

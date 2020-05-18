@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container">
+    <div class="form-container">
+        <h2>Register</h2>
+        <hr>
+        <form action="{{ url_for('register') }}" method="POST">
+            {{ form.hidden_tag() }}
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.first_name.label(for_="first_name") }}
+                        {{ form.first_name(class_="form-control", placeholder="First Name", id="first_name") }}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        {{ form.last_name.label(for_="last_name") }}
+                        {{ form.last_name(class_="form-control", placeholder="Last Name", id="last_name") }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form.email.label(for_="email") }}
+                {{ form.email(class_="form-control", placeholder="Email", id="email") }}
+            </div>
+            <div class="form-group">
+                {{ form.password.label(for_="password") }}
+                {{ form.password(class_="form-control", placeholder="Password", id="password") }}
+            </div>
+            <div class="form-group">
+                {{ form.confirm_password.label(for_="confirm_password") }}
+                {{ form.confirm_password(class_="form-control", placeholder="Confirm Password", id="confirm_password") }}
+            </div>
+            {{ form.submit(class_="btn btn-primary") }}
+        </form>
+        <hr>
+        <p>Already an user ? <a href="{{ url_for('login') }}" >Login</a></p>
+    </div>
+</div>
+{% endblock %}
