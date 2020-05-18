@@ -1,7 +1,7 @@
 {% if vegetables %}
     {% for vegetable in vegetables %}
         <div class="col-sm-3.5 veg_wrapper">
-            <img src="{{ vegetable.image }}" alt="">
+            <img src="{{ url_for('static', filename='uploads/' + vegetable.image) }}" alt="">
             <div class="description">
                 <p class="title noselect">{{ vegetable.name }}</p>
                 <p class="price-tag noselect">Rs. <span>{{ vegetable.price }}</span> per {{ vegetable.selling_unit }}</p>

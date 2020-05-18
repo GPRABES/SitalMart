@@ -1,16 +1,22 @@
+import os
+import secrets
+
 from flask import Flask, render_template, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from forms import LoginForm, RegistrationForm, VegetableForm
 from flask_login import LoginManager, UserMixin, login_user
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '59db39ee7efedab67f3d397083f2d265'
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///site.db"
-app.config['UPLOAD_FOLDER'] = '/uploads'
+app.config['UPLOAD_FOLDER'] = 'uploads'
+
 login_manager = LoginManager()
 login_manager.init_app(app)
 
 db = SQLAlchemy(app)
+
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -30,7 +36,7 @@ class User(UserMixin, db.Model):
 class Vegetable(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(100), nullable=False)
-    image = db.Column(db.String(60), default="vegetable.png")
+    image = db.Column(db.String(20), default="default.png")
     price = db.Column(db.String(50), nullable=False)
     selling_unit = db.Column(db.String(20), nullable=False)
 
@@ -47,11 +53,28 @@ def home():
     vegetables = Vegetable.query.all()
     return render_template('home.html', vegetables=vegetables)
 
+def save_vegetable_image(form_image):
+    random_hex = secrets.token_hex(8)
+    _, f_ext = os.path.splitext(form_image.filename)
+    image_filename = random_hex + f_ext
+    image_path = os.path.join(app.root_path, 'static/uploads', image_filename)
+    form_image.save(image_path)
+
+    return image_filename
+
+
 @app.route("/add-vegetable", methods=["GET", "POST"])
 def add_vegetable():
     form = VegetableForm()
     if(form.validate_on_submit()):
-        vegetable = Vegetable(name=form.name.data, price=form.price.data, selling_unit=form.selling_unit.data)
+        if form.image.data:
+            veg_image = save_vegetable_image(form.image.data)
+
+        if veg_image:
+            vegetable = Vegetable(name=form.name.data, price=form.price.data, selling_unit=form.selling_unit.data, image=veg_image)
+        else:
+            vegetable = Vegetable(name=form.name.data, price=form.price.data, selling_unit=form.selling_unit.data, image="default.png")
+
         db.session.add(vegetable)
         db.session.commit()
         return redirect(url_for('home'))

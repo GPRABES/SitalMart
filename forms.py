@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileField, FileAllowed
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import DataRequired, Length, EqualTo
 
@@ -6,6 +7,7 @@ class VegetableForm(FlaskForm):
     name = StringField("Name", validators=[DataRequired()])
     price = StringField("Price", validators=[DataRequired()])
     selling_unit = StringField("Selling Unit", validators=[DataRequired()])
+    image = FileField("Image", validators=[FileAllowed(['png', 'jpg', 'jpeg'])])
     submit = SubmitField("Submit")
 
 class LoginForm(FlaskForm):

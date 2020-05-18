@@ -9,11 +9,29 @@
             {{ form.hidden_tag() }}
             <div class="form-group">
                 {{ form.email.label(for_="email") }}
-                {{ form.email(class_="form-control", placeholder="Email", id="email") }}
+                {% if form.password.errors %}
+                    {{ form.email(class_="form-control form-control-lg", placeholder="Email", id="email") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.email(class_="form-control form-control-lg", placeholder="Email", id="email") }}
+                {% endif %}
             </div>
             <div class="form-group">
                 {{ form.password.label(for_="pwd") }}
-                {{ form.password(class_="form-control", placeholder="Password", id="pwd") }}
+                {% if form.password.errors %}
+                {{ form.password(class_="form-control form-control-lg", placeholder="Password", id="pwd") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.password(class_="form-control form-control-lg", placeholder="Password", id="pwd") }}
+                {% endif %}
             </div>
             <div class="form-group form-check">
                 {{ form.remember_me(class_="form-check-input") }}

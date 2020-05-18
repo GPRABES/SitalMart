@@ -1,13 +1,13 @@
-cucumber -> काक्रो -> 20
-carrot -> गाजर -> 20 *
-green cabbage -> हरियो बन्द -> 20
-bringle -> भेन्टा -> 30 *
-bodi -> बोडी -> 40
-tomato -> टमाटर -> 50 *
-chili -> खुरसानी -> 60
-capsicum -> क्याप्सिकम -> 50
-pumpkin -> फरसी -> 25
-bitter gourd -> करेला -> 55
-okra -> भिंडी -> 65
-ghiraula -> घिरौला -> 50
-lauka -> लाउका -> 30
+cucumber -> काक्रो -> 20 -
+carrot -> गाजर -> 20 -
+green cabbage -> हरियो बन्द -> 20 -
+bringle -> भेन्टा -> 30 -
+snake bean -> बोडी -> 40 -
+tomato -> टमाटर -> 50 -
+chili -> खुरसानी -> 60 -
+capsicum -> क्याप्सिकम -> 50 -
+pumpkin -> फरसी -> 25 - 
+bitter gourd -> करेला -> 55 -
+okra -> भिंडी -> 65 -
+ghiraula -> घिरौला -> 50 -
+bottle gourd -> लाउका -> 30 -

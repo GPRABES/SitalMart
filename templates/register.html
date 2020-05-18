@@ -12,27 +12,72 @@
                 <div class="col">
                     <div class="form-group">
                         {{ form.first_name.label(for_="first_name") }}
-                        {{ form.first_name(class_="form-control", placeholder="First Name", id="first_name") }}
+                        {% if form.first_name.errors %}
+                            {{ form.first_name(class_="form-control form-control-lg", placeholder="First Name", id="first_name") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.first_name.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.first_name(class_="form-control form-control-lg", placeholder="First Name", id="first_name") }}
+                        {% endif %}
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
                         {{ form.last_name.label(for_="last_name") }}
-                        {{ form.last_name(class_="form-control", placeholder="Last Name", id="last_name") }}
+                        {% if form.last_name.errors %}
+                            {{ form.last_name(class_="form-control form-control-lg", placeholder="Last Name", id="last_name") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.last_name.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.last_name(class_="form-control form-control-lg", placeholder="Last Name", id="last_name") }}
+                        {% endif %}
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 {{ form.email.label(for_="email") }}
-                {{ form.email(class_="form-control", placeholder="Email", id="email") }}
+                {% if form.email.errors %}
+                    {{ form.email(class_="form-control form-control-lg", placeholder="Email", id="email") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.email(class_="form-control form-control-lg", placeholder="Email", id="email") }}
+                {% endif %}
             </div>
             <div class="form-group">
                 {{ form.password.label(for_="password") }}
-                {{ form.password(class_="form-control", placeholder="Password", id="password") }}
+                {% if form.password.errors %}
+                    {{ form.password(class_="form-control form-control-lg", placeholder="Password", id="password") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.password(class_="form-control form-control-lg", placeholder="Password", id="password") }}
+                {% endif %}
             </div>
             <div class="form-group">
                 {{ form.confirm_password.label(for_="confirm_password") }}
-                {{ form.confirm_password(class_="form-control", placeholder="Confirm Password", id="confirm_password") }}
+                {% if form.confirm_password.errors %}
+                    {{ form.confirm_password(class_="form-control form-control-lg", placeholder="Confirm Password", id="confirm_password") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.confirm_password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.confirm_password(class_="form-control form-control-lg", placeholder="Confirm Password", id="confirm_password") }}
+                {% endif %}
             </div>
             {{ form.submit(class_="btn btn-primary") }}
         </form>
