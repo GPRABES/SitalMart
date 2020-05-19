@@ -6,7 +6,7 @@
     </div>
     <nav>
         <ul>
-            <li><a href="#home" class="btn text-muted">Home</a></li>
+            <li><a href="{{ url_for('home') }}" class="btn text-muted">Home</a></li>
             <li><a href="#shop" class="btn text-muted">Shop</a></li>
             <li><a href="#vegetables" class="btn text-muted">Vegetables</a></li>
             <li><a href="#fruits" class="btn text-muted">Fruits</a></li>
@@ -14,6 +14,11 @@
         </ul>
     </nav>
     <div>
-        <a href="{{ url_for('login') }}" class="btn btn-outline-secondary">Login / Register</a>
+        {% if username %}
+            <a href="{{ url_for('add_vegetable') }}" class="btn btn-info">Add</a>
+            <a href="{{ url_for('settings') }}" class="btn btn-outline-secondary">{{ username }}</a>
+        {% else %}
+            <a href="{{ url_for('login') }}" class="btn btn-outline-secondary">Login / Register</a>
+        {% endif %}
     </div>
 </header>

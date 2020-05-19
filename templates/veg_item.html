@@ -1,13 +1,15 @@
 {% if vegetables %}
-    {% for vegetable in vegetables %}
-        <div class="col-sm-3.5 veg_wrapper">
-            <img src="{{ url_for('static', filename='uploads/' + vegetable.image) }}" alt="">
-            <div class="description">
-                <p class="title noselect">{{ vegetable.name }}</p>
-                <p class="price-tag noselect">Rs. <span>{{ vegetable.price }}</span> per {{ vegetable.selling_unit }}</p>
-            </div>
-        </div>
-    {% endfor %}
-{% else %}
-    <p>NOTHING TO SHOW</p>
+    <div class="row">
+        {% for vegetable in vegetables %}
+            <a href="{{ url_for('update_vegetable', id=vegetable.id) }}" class="veg_wrapper">
+                <div class="col-sm-3.5 ">
+                    <img src="{{ url_for('static', filename='uploads/' + vegetable.image) }}" alt="">
+                    <div class="description">
+                        <p class="title noselect">{{ vegetable.name }}</p>
+                        <p class="price-tag noselect">Rs. <span>{{ vegetable.price }}</span> per {{ vegetable.selling_unit }}</p>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
 {% endif %}

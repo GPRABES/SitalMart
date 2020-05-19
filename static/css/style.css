@@ -23,26 +23,31 @@ ul{
 /* --------------veg item ---------------------- */
 .veg_wrapper{
     background: white;
+    width: 200px;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 10px;
-    margin: 5px;
+    margin: 10px;
     border-radius: 20px;
     border: 2px solid white;
     box-shadow: 0px 0px 10px 10px #f8f8f8;
 }
 .veg_wrapper:hover{
     border-color: #f8f8f8;
+    cursor: pointer;
+    box-shadow: 1px 1px 10px 10px #e8e8e8;
+    text-decoration: none;
 }
 .veg_wrapper img{
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
 }
 
 .description{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding:0 15px;
+    align-items: center;
 }
 
 .description p{
@@ -54,25 +59,28 @@ ul{
     padding: 0;
     margin: 0;
 }
+.description p:hover{
+    text-decoration: none;
+}
 
 .description .title{
-    font-size: 2rem;
+    font-size: 1.2rem;
     font-weight: 700;
+    text-align: center;
 }
 
 .description .price-tag{
-    font-size: 1rem;
+    font-size: .9rem;
 }
 .description .price-tag span{
-    font-size: 2rem;
-    padding: 0 5px;
-    background: gray;
-    color: white;
-    border: 2px solid gray;
-    border-radius: 5px;
+    font-size: 1.2rem;
 }
 
 /* ----------------veg item ends --------------- */
+
+.page-title{
+    display: inline-block;
+}
 
 .form-container{
     padding: 20px;
